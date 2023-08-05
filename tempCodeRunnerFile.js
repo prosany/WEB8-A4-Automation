@@ -1,0 +1,1 @@
+/function\s+isLGSeven\s*\(([^)]*)\)\s*\{([^}]*)\}/
