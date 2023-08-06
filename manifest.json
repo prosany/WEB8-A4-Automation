@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "WEB-8 Automation",
-  "description": "WEB-8 Automation. Created by SANY 🍔 & Moniruzzaman ☕️ & SAKI 🌶️",
+  "description": "WEB-8 Automation.",
   "version": "1.0",
   "permissions": ["activeTab"],
   "content_scripts": [

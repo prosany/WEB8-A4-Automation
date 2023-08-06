@@ -68,8 +68,6 @@ const startSpyings = async () => {
             : "You got bonus marks for comments. No marks for validation.",
         };
       }
-
-      console.log(out1, out2, out3, out4, cubeFeedback);
     } catch (err) {
       cubeFeedback = {
         ...cubeFeedback,
@@ -79,7 +77,7 @@ const startSpyings = async () => {
         isError: true,
         message:
           err.name === "ReferenceError"
-            ? "No function found named with cubeFeedback"
+            ? `❌ Error occurred while running cubeNumber function. The error was: "${err.message}"`
             : err.message,
       };
     }
@@ -144,8 +142,6 @@ const startSpyings = async () => {
             : "You got bonus marks for comments. No marks for validation.",
         };
       }
-
-      console.log("Final result: ", matchFeedback, out1, out2, out3, out4);
     } catch (err) {
       matchFeedback = {
         ...matchFeedback,
@@ -155,7 +151,7 @@ const startSpyings = async () => {
         isError: true,
         message:
           err.name === "ReferenceError"
-            ? "No function found named with evenOdd"
+            ? `❌ Error occurred while running matchFinder function. The error was: "${err.message}"`
             : err.message,
       };
     }
@@ -234,7 +230,7 @@ const startSpyings = async () => {
         isError: true,
         message:
           err.name === "ReferenceError"
-            ? "No function found named with isLGSeven"
+            ? `❌ Error occurred while running sortMaker function. The error was: "${err.message}"`
             : err.message,
       };
     }
@@ -244,15 +240,21 @@ const startSpyings = async () => {
     try {
       // test cases
       let sampleInput = [
-        {street: 12,house: "60B",society: "Mars Perfect"},
-        {street: 15,society: "Earth Perfect"},
-        {street: 40}
+        { street: 12, house: "60B", society: "Mars Perfect" },
+        { street: 15, society: "Earth Perfect" },
+        { street: 40 },
       ];
-      let expectedOutput = ["12,60B, Mars Perfect", "15,__, Earth Perfect", "40, __, __"];
+      let expectedOutput = [
+        "12,60B, Mars Perfect",
+        "15,__, Earth Perfect",
+        "40, __, __",
+      ];
       let [out1, out2, out3] = sampleInput.map((singleOut, index) => {
-
         let evalOut = findAddress(singleOut);
-        if (evalOut.replace(/\s/g, "") === expectedOutput[index].replace(/\s/g, "")) {
+        if (
+          evalOut.replace(/\s/g, "") ===
+          expectedOutput[index].replace(/\s/g, "")
+        ) {
           return true;
         } else if (
           index === 2 &&
@@ -303,7 +305,7 @@ const startSpyings = async () => {
         isError: true,
         message:
           err.name === "ReferenceError"
-            ? "No function found named with isLGSeven"
+            ? `❌ Error occurred while running findAddress function. The error was: "${err.message}"`
             : err.message,
       };
     }
@@ -313,10 +315,12 @@ const startSpyings = async () => {
     try {
       // test cases
       let sampleInput = [
-       [[1,2,5], 10],[[1,5,5],10],[[],12]
+        [[1, 2, 5], 10],
+        [[1, 5, 5], 10],
+        [[], 12],
       ];
-      let expectedOutput = [false,true,"Random Text"];
-      let [out1, out2,out3] = sampleInput.map((singleOut, index) => {
+      let expectedOutput = [false, true, "Random Text"];
+      let [out1, out2, out3] = sampleInput.map((singleOut, index) => {
         let evalOut = canPay(singleOut[0], singleOut[1]);
         if (evalOut === expectedOutput[index]) {
           return true;
@@ -370,7 +374,7 @@ const startSpyings = async () => {
         isError: true,
         message:
           err.name === "ReferenceError"
-            ? "No function found named with gemsToDiamond!"
+            ? `❌ Error occurred while running canPay function. The error was: "${err.message}"`
             : err.message,
       };
     }
