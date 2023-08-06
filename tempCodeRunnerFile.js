@@ -1,1 +1,1 @@
-/function\s+isLGSeven\s*\(([^)]*)\)\s*\{([^}]*)\}/
+feedGems

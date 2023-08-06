@@ -51,8 +51,8 @@ function generateFeedbacks() {
     { name: "cubeNumber", ...cubeFeedback },
     { name: "matchFinder", ...matchFeedback },
     { name: "sortMaker", ...sortFeedback },
-    { name: "findingBadData", ...feedBadData },
-    { name: "gemsToDiamond", ...feedGems },
+    { name: "findAddress", ...findFeedback },
+    { name: "canPay", ...canPayFeedback },
   ];
   let totalMarkers = ourMarks.reduce((prev, next) => prev + next.marks || 0, 0);
 

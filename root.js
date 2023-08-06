@@ -10,16 +10,16 @@ document.addEventListener("keydown", async function (event) {
     cubeFeedback = { ...sampleNoBonus };
     matchFeedback = { ...sampleNoBonus };
     sortFeedback = { ...sampleNoBonus };
-    feedBadData = { ...sampleNoBonus };
-    feedGems = { ...sampleNoBonus };
+    findFeedback = { ...sampleNoBonus };
+    canPayFeedback = { ...sampleNoBonus };
     startSpyings();
 
     let ourMarks = [
       { name: "CubeNumber", ...cubeFeedback },
       { name: "MatchFinder", ...matchFeedback },
       { name: "SortMaker", ...sortFeedback },
-      { name: "FindingBadData", ...feedBadData },
-      { name: "GemsToDiamond", ...feedGems },
+      { name: "FindAddress", ...findFeedback },
+      { name: "CanPay", ...canPayFeedback },
     ];
 
     let rawSubmission = document.getElementsByClassName("col-12 col-md-11");
@@ -83,8 +83,8 @@ document.addEventListener("keydown", async function (event) {
     cubeFeedback = { ...sampleNoBonus };
     matchFeedback = { ...sampleNoBonus };
     sortFeedback = { ...sampleNoBonus };
-    feedBadData = { ...sampleNoBonus };
-    feedGems = { ...sampleNoBonus };
+    findFeedback = { ...sampleNoBonus };
+    canPayFeedback = { ...sampleNoBonus };
     var elementToRemove = document.querySelector("#functional-assignment");
     var marSug = document.getElementById("markSuggestions");
     elementToRemove.remove();

@@ -6,8 +6,8 @@ let sampleNoBonus = {
 let cubeFeedback = { ...sampleNoBonus };
 let matchFeedback = { ...sampleNoBonus };
 let sortFeedback = { ...sampleNoBonus };
-let feedBadData = { ...sampleNoBonus };
-let feedGems = { ...sampleNoBonus };
+let findFeedback = { ...sampleNoBonus };
+let canPayFeedback = { ...sampleNoBonus };
 
 const startSpyings = async () => {
   try {
@@ -244,24 +244,23 @@ const startSpyings = async () => {
     try {
       // test cases
       let sampleInput = [
-        [69, 21, -13, 54, -1, -59, -2],
-        [2, 5, 13],
-        [-4, -9, -5, -33, -55],
-        "",
+        {street: 12,house: "60B",society: "Mars Perfect"},
+        {street: 15,society: "Earth Perfect"},
+        {street: 40}
       ];
-      let expectedOutput = [4, 0, 5, "Random Text"];
-      let [out1, out2, out3, out4] = sampleInput.map((singleOut, index) => {
-        let evalOut = findingBadData(singleOut);
-        if (evalOut === expectedOutput[index]) {
+      let expectedOutput = ["12,60B, Mars Perfect", "15,__, Earth Perfect", "40, __, __"];
+      let [out1, out2, out3] = sampleInput.map((singleOut, index) => {
+
+        let evalOut = findAddress(singleOut);
+        if (evalOut.replace(/\s/g, "") === expectedOutput[index].replace(/\s/g, "")) {
           return true;
         } else if (
-          index === 3 &&
-          typeof evalOut === "string" &&
-          evalOut.length > 4
+          index === 2 &&
+          evalOut.replace(/\s/g, "") === expectedOutput[2].replace(/\s/g, "")
         ) {
-          feedBadData = {
-            ...feedBadData,
-            marks: (feedBadData.marks || 0) + 1,
+          findFeedback = {
+            ...findFeedback,
+            marks: (findFeedback.marks || 0) + 1,
             isBonus: true,
             gotBonus: true,
             bonusMessage: "You got bonus marks for validation & commenting",
@@ -271,33 +270,33 @@ const startSpyings = async () => {
           return false;
         }
       });
-      if (out1 && out2 && out3) {
-        feedBadData = {
-          ...feedBadData,
-          marks: (feedBadData.marks || 0) + 10,
+      if (out1 && out2) {
+        findFeedback = {
+          ...findFeedback,
+          marks: (findFeedback.marks || 0) + 10,
           isSuccess: true,
           isFunctionAvailable: true,
           gotFunction: true,
-          message: !out4
+          message: !out3
             ? "😞 Good job! But need improvement!"
-            : "🏆 Nice!!! findingBadData function working fine. Great job!",
+            : "🏆 Nice!!! findAddress function working fine. Great job!",
         };
       } else {
-        feedBadData = {
-          ...feedBadData,
-          marks: feedBadData.marks > 0 ? feedBadData.marks + 3 : 3,
+        findFeedback = {
+          ...findFeedback,
+          marks: findFeedback.marks > 0 ? findFeedback.marks + 3 : 3,
           isError: true,
           isFunctionAvailable: true,
           message:
             "❌ Wrong output! But You got some partial marks. Need improvement.",
-          bonusMessage: feedBadData.isBonus
-            ? feedBadData.bonusMessage
+          bonusMessage: findFeedback.isBonus
+            ? findFeedback.bonusMessage
             : "You got bonus marks for comments. No marks for validation.",
         };
       }
     } catch (err) {
-      feedBadData = {
-        ...feedBadData,
+      findFeedback = {
+        ...findFeedback,
         marks: 0,
         isFunctionAvailable: null,
         isSuccess: null,
@@ -314,24 +313,21 @@ const startSpyings = async () => {
     try {
       // test cases
       let sampleInput = [
-        [1, 1, 1],
-        [20, 200, 50],
-        [29, 400, 85],
-        [-2, 0, ""],
+       [[1,2,5], 10],[[1,5,5],10],[[],12]
       ];
-      let expectedOutput = [96, 6970, 15064, "Random Text"];
-      let [out1, out2, out3, out4] = sampleInput.map((singleOut, index) => {
-        let evalOut = gemsToDiamond(singleOut[0], singleOut[1], singleOut[2]);
+      let expectedOutput = [false,true,"Random Text"];
+      let [out1, out2,out3] = sampleInput.map((singleOut, index) => {
+        let evalOut = canPay(singleOut[0], singleOut[1]);
         if (evalOut === expectedOutput[index]) {
           return true;
         } else if (
-          index === 3 &&
+          index === 2 &&
           typeof evalOut === "string" &&
           evalOut.length > 4
         ) {
-          feedGems = {
-            ...feedGems,
-            marks: (feedGems.marks || 0) + 1,
+          canPayFeedback = {
+            ...canPayFeedback,
+            marks: (canPayFeedback.marks || 0) + 1,
             isBonus: true,
             gotBonus: true,
             bonusMessage: "You got bonus marks for validation & commenting",
@@ -341,33 +337,33 @@ const startSpyings = async () => {
           return false;
         }
       });
-      if (out1 && out2 && out3) {
-        feedGems = {
-          ...feedGems,
-          marks: (feedGems.marks || 0) + 10,
+      if (out1 && out2) {
+        canPayFeedback = {
+          ...canPayFeedback,
+          marks: (canPayFeedback.marks || 0) + 10,
           isSuccess: true,
           isFunctionAvailable: true,
           gotFunction: true,
-          message: !out4
+          message: !out3
             ? "😞 Good job! But need improvement!"
-            : "🏆 Nice!!! gemsToDiamond function working fine. Great job!",
+            : "🏆 Nice!!! canPay function working fine. Great job!",
         };
       } else {
-        feedGems = {
-          ...feedGems,
-          marks: feedGems.marks > 0 ? feedGems.marks + 3 : 3,
+        canPayFeedback = {
+          ...canPayFeedback,
+          marks: canPayFeedback.marks > 0 ? canPayFeedback.marks + 3 : 3,
           isError: true,
           isFunctionAvailable: true,
           message:
             "❌ Wrong output! But You got some partial marks. Need improvement.",
-          bonusMessage: feedGems.isBonus
-            ? feedGems.bonusMessage
+          bonusMessage: canPayFeedback.isBonus
+            ? canPayFeedback.bonusMessage
             : "You got bonus marks for comments. No marks for validation.",
         };
       }
     } catch (err) {
-      feedGems = {
-        ...feedGems,
+      canPayFeedback = {
+        ...canPayFeedback,
         marks: 0,
         isFunctionAvailable: null,
         isSuccess: null,
@@ -395,7 +391,7 @@ const startSpyings = async () => {
     cubeFeedback = feedbackSample;
     matchFeedback = feedbackSample;
     sortFeedback = feedbackSample;
-    feedBadData = feedbackSample;
-    feedGems = feedbackSample;
+    findFeedback = feedbackSample;
+    canPayFeedback = feedbackSample;
   }
 };
