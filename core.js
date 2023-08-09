@@ -1,7 +1,7 @@
 let sampleNoBonus = {
   isBonus: false,
-  marks: 1,
-  bonusMessage: "You got bonus marks for comments. No marks for validation.",
+  marks: 1, //if no mark for commenting ==> marks: 0
+  bonusMessage: "You got bonus marks for comments. No marks for validation.", //no marks for validation
 };
 let cubeFeedback = { ...sampleNoBonus };
 let matchFeedback = { ...sampleNoBonus };
@@ -32,10 +32,10 @@ const startSpyings = async () => {
         ) {
           cubeFeedback = {
             ...cubeFeedback,
-            marks: (cubeFeedback.marks || 0) + 1,
+            marks: (cubeFeedback.marks || 0) + 1,                 // +2
             isBonus: true,
             gotBonus: true,
-            bonusMessage: "You got bonus marks for validation & commenting",
+            bonusMessage: "You got bonus marks for validation & commenting",                     // you got bonus for validation
           };
           return true;
         } else {
@@ -65,7 +65,7 @@ const startSpyings = async () => {
             "❌ Wrong output! But You got some partial marks. Need improvement.",
           bonusMessage: cubeFeedback.isBonus
             ? cubeFeedback.bonusMessage
-            : "You got bonus marks for comments. No marks for validation.",
+            : "You got bonus marks for comments. No marks for validation.", //"No marks for validation"
         };
       }
     } catch (err) {
