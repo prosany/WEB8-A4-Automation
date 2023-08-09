@@ -1,7 +1,7 @@
 let sampleNoBonus = {
   isBonus: false,
-  marks: 1, //if no mark for commenting ==> marks: 0
-  bonusMessage: "You got bonus marks for comments. No marks for validation.", //no marks for validation
+  marks: 0, //if no mark for commenting ==> marks: 0
+  bonusMessage: "Your validation is not working so no mark for validation.", //no marks for validation
 };
 let cubeFeedback = { ...sampleNoBonus };
 let matchFeedback = { ...sampleNoBonus };
@@ -32,10 +32,10 @@ const startSpyings = async () => {
         ) {
           cubeFeedback = {
             ...cubeFeedback,
-            marks: (cubeFeedback.marks || 0) + 1,                 // +2
+            marks: (cubeFeedback.marks || 0) + 2,                 // +2
             isBonus: true,
             gotBonus: true,
-            bonusMessage: "You got bonus marks for validation & commenting",                     // you got bonus for validation
+            bonusMessage: "You got bonus marks for validation",                     // you got bonus for validation
           };
           return true;
         } else {
@@ -65,7 +65,7 @@ const startSpyings = async () => {
             "❌ Wrong output! But You got some partial marks. Need improvement.",
           bonusMessage: cubeFeedback.isBonus
             ? cubeFeedback.bonusMessage
-            : "You got bonus marks for comments. No marks for validation.", //"No marks for validation"
+            : "No marks for validation.", //"No marks for validation"
         };
       }
     } catch (err) {
@@ -106,7 +106,7 @@ const startSpyings = async () => {
           ) {
             matchFeedback = {
               ...matchFeedback,
-              marks: (matchFeedback.marks || 0) + 1,
+              marks: (matchFeedback.marks || 0) + 2,
               isBonus: true,
               gotBonus: true,
               bonusMessage: "You got bonus marks for validation & commenting",
@@ -185,7 +185,7 @@ const startSpyings = async () => {
           ) {
             sortFeedback = {
               ...sortFeedback,
-              marks: (sortFeedback.marks || 0) + 1,
+              marks: (sortFeedback.marks || 0) + 2,
               isBonus: true,
               gotBonus: true,
               bonusMessage: "You got bonus marks for validation & commenting",
@@ -252,17 +252,11 @@ const startSpyings = async () => {
       let [out1, out2, out3] = sampleInput.map((singleOut, index) => {
         let evalOut = findAddress(singleOut);
         if (
-          evalOut.replace(/\s/g, "") ===
-          expectedOutput[index].replace(/\s/g, "")
-        ) {
-          return true;
-        } else if (
-          index === 2 &&
-          evalOut.replace(/\s/g, "") === expectedOutput[2].replace(/\s/g, "")
+          evalOut.replace(/\s/g, "") === expectedOutput[index].replace(/\s/g, "")
         ) {
           findFeedback = {
             ...findFeedback,
-            marks: (findFeedback.marks || 0) + 1,
+            marks:  2,
             isBonus: true,
             gotBonus: true,
             bonusMessage: "You got bonus marks for validation & commenting",
@@ -331,7 +325,7 @@ const startSpyings = async () => {
         ) {
           canPayFeedback = {
             ...canPayFeedback,
-            marks: (canPayFeedback.marks || 0) + 1,
+            marks: (canPayFeedback.marks || 0) + 2,
             isBonus: true,
             gotBonus: true,
             bonusMessage: "You got bonus marks for validation & commenting",

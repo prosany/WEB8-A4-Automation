@@ -54,6 +54,7 @@ function generateFeedbacks() {
     { name: "findAddress", ...findFeedback },
     { name: "canPay", ...canPayFeedback },
   ];
+  console.log(ourMarks)
   let totalMarkers = ourMarks.reduce((prev, next) => prev + next.marks || 0, 0);
 
   // assignment submited at
